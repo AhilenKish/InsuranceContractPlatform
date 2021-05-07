@@ -1,0 +1,53 @@
+
+<form [formGroup]="form" (ngSubmit)="save(form)">
+  <mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+      </mat-panel-title>
+      <mat-panel-description>
+        Create/Remove Contract
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Contractor 1</mat-label>
+      <input type="text" placeholder="" matInput formControlName="FirstContractor"
+          [matAutocomplete]="auto" />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let item of model.Contractors" [value]="item.Name" (click) = "getContractorID1(item.Id)"> {{ item.Name }}  </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    </div>
+    <div class="col-12">
+    <mat-form-field appearance="outline">
+    <mat-label>Contractor 2</mat-label>
+      <input type="text" placeholder="" matInput formControlName="SecondContractor"
+      [matAutocomplete]="auto1" />
+      <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+        <mat-option *ngFor="let item of model.Contractors" [value]="item.Name" (click) = "getContractorID2(item.Id)"> {{ item.Name }}  </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    </div>
+    <div  class="col-12">
+      <div style="color: red;" *ngIf="errorMessage">
+        {{ this.errorMessage }}
+      </div>
+      <div style="color: green;" *ngIf="sucessMessage">
+        {{ this.sucessMessage }}
+      </div>
+        <button mat-raised-button type="submit" class="mr-2">Create</button>
+        <button mat-raised-button type="button" (click)="remove(form)">Remove</button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+
+
+  
+  
+</form>

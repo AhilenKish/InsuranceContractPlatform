@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="save(form)">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        </mat-panel-title>
+        <mat-panel-description>
+          Add Contractor
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="Name" />
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="Address" />
+        </mat-form-field>
+        </div>
+        <div class="col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="PhoneNumber" />
+        </mat-form-field>
+      </div>
+      </div>
+      <div>
+        <div style="color: red;" *ngIf="this.errorMessage">
+          {{ this.errorMessage }}
+        </div>
+        <div style="color:green;" *ngIf="this.sucessMessage">
+          {{ this.sucessMessage }}
+        </div>
+        <button mat-raised-button type="submit">Submit</button>
+       
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+  <app-create-contract #contract></app-create-contract>
+  <app-contract-chain #chain></app-contract-chain>
+  
+ 
+</form>

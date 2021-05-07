@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="New folder\**" />
+    <Content Remove="New folder\**" />
+    <EmbeddedResource Remove="New folder\**" />
+    <None Remove="New folder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InsuranceContractPlatform.DataServices\InsuranceContractPlatform.DataServices.csproj" />
+    <ProjectReference Include="..\InsuranceContractPlatform.Services\InsuranceContractPlatform.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Angular\" />
+  </ItemGroup>
+
+</Project>
