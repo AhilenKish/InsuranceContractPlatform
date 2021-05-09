@@ -15,12 +15,20 @@ namespace InsuranceContractPlatform.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<GetContractResponse>> GetContractors()
         {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
             return await Mediator.Send(new GetContractServices());
         }
 
         [HttpPost("create")]
         public async Task<ActionResult<PostContractResponse>> Create(PostContractRequest contractorDto)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
 
             var response = await Mediator.Send(new PostContractServices() { Contractors = contractorDto.Contractors , IsRemoved  = false});
             if (response.ContractExists)
@@ -36,7 +44,10 @@ namespace InsuranceContractPlatform.WebApi.Controllers
         [HttpPost("remove")]
         public async Task<ActionResult<PostContractResponse>> Remove(PostContractRequest contractorDto)
         {
-
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
             var response = await Mediator.Send(new PostContractServices() { Contractors = contractorDto.Contractors, IsRemoved = true });
             if (response.ContractExists)
             {

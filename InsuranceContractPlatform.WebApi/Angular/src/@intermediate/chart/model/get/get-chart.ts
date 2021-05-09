@@ -1,13 +1,18 @@
-import { Contractor } from "src/@intermediate/contractor/model/get/get-create-contractor";
-
-export class GetChartResponse 
-{
-    public ContactorsChart: ContactorsChart[];
+export class GetChartResponse {
+  public Contractors: ContactorsChart[];
+  public Relationship: ContactorsChart[];
 }
 
-export class ContactorsChart 
-{
-    public id: number;
-    public name: string;
-    public contractId: number;
+export interface ContactorsChart {
+  Id: number;
+  Name: string;
+  ContractCount: number;
+  Description: string;
 }
+
+export interface InsuranceContract {
+  Id: number;
+  Description: string;
+}
+
+export class GetChartRequest {}

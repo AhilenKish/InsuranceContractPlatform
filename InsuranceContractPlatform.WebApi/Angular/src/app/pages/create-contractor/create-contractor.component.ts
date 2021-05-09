@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ContractorForm,PostContractorRequest, PostContractorResponse } from 'src/@intermediate/contractor/model/post/post-create-contractor';
 import { ContractorService } from 'src/@services/contractor/contractor.service';
+import { ChartComponent } from '../chart/chart.component';
 import { ContractChainComponent } from '../contract-chain/contract-chain.component';
 import { CreateContractComponent } from '../create-contract/create-contract.component';
 
@@ -16,9 +17,13 @@ export class CreateContractorComponent implements OnInit
   errorMessage: string;
   sucessMessage: string;
   panelOpenState: boolean;
+  updateChartOnEvent: boolean = false;
+  
+
 
   @ViewChild("contract") contract: CreateContractComponent;
   @ViewChild("chain") chain: ContractChainComponent;
+  @ViewChild("chart") chart: ChartComponent;
 
   constructor(private contractorService: ContractorService) 
   {
@@ -53,8 +58,5 @@ export class CreateContractorComponent implements OnInit
     });
   }
 
- 
-
-  
 
 }

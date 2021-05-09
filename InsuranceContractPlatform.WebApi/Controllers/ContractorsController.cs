@@ -19,7 +19,12 @@ namespace InsuranceContractPlatform.WebApi.Controllers
         [HttpPost("create")]
         public async Task<ActionResult<PostContractorResponse>> Create(Contractor contractorDto)
         {
-       
+
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
+
             var response =  await Mediator.Send(new PostContractorServices(){ Contractor = contractorDto });
             if (response.ContractorExists)
             {

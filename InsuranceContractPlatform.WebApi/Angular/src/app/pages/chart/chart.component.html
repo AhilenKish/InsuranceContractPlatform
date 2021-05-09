@@ -1,7 +1,31 @@
-<p>
-  <button type="button" (click) = "showChart()"> Show Chart </button>
-  
-</p>
-<div style="display: block;">
- 
+<div style="width: 100%">
+  <button mat-raised-button type="submit" (click)="refershGraph('line')">
+    Line Graph Show/Refresh
+  </button>
+  <button mat-raised-button type="submit" (click)="refershGraph('bar')">
+    Bar Graph Show/Refresh
+  </button>
+</div>
+
+<div
+  class="d-flex justify-content-center"
+  style="width: 60%"
+  *ngIf="
+    lineChartData?.length > 0 &&
+    lineChartLabels?.length > 0 &&
+    lineChartData &&
+    lineChartLabels
+  "
+>
+  <canvas
+    baseChart
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [colors]="lineChartColors"
+    [legend]="lineChartLegend"
+    [chartType]="lineChartType"
+    [plugins]="lineChartPlugins"
+  >
+  </canvas>
 </div>

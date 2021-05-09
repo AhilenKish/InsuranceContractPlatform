@@ -18,6 +18,9 @@ namespace InsuranceContractPlatform.Services.Contracts.Post
     public class PostContractServicesHandler : IRequestHandler<PostContractServices, PostContractResponse>
     {
         private readonly DataContext _context;
+        // this is used for graph 
+        private int radious = 10;
+
 
         public PostContractServicesHandler(DataContext context)
         {
@@ -61,7 +64,7 @@ namespace InsuranceContractPlatform.Services.Contracts.Post
 
                 var contract = new InsuranceContract
                 {
-                    Description = request.Contractors[0].Id + "," + request.Contractors[1]
+                    Description = "{ " +  request.Contractors[0].Name + " -- "  + request.Contractors[1].Name + " }"
                 };
 
                 _context.Contracts.Add(contract);

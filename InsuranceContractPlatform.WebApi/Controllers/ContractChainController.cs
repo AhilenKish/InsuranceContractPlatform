@@ -14,12 +14,20 @@ namespace InsuranceContractPlatform.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<GetContractResponse>> GetContractors()
         {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
             return await Mediator.Send(new GetContractServices());
         }
 
         [HttpPost("chain")]
         public async Task<ActionResult<PostContractChainResponse>> Create(PostContractChainRequest contractorDto)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest("Bad Request");
+            }
             var response = await Mediator.Send(new PostContractChainServices() { Contractors = contractorDto.Contractors });
             return response;
         }

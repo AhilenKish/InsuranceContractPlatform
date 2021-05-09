@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ChartComponent } from './pages/chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -40,8 +41,8 @@ import { ChartComponent } from './pages/chart/chart.component';
     MatAutocompleteModule,
     NgbModule,
     MatExpansionModule,
-    MatGridListModule
-    
+    MatGridListModule,
+    ChartsModule,
   ],
   exports: [MatFormFieldModule, MatInputModule, MatRippleModule],
   providers: [],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GetContractRequest, GetContractResponse } from 'src/@intermediate/contract/model/get/get-contract';
 import { ContractsForm, PostContractRequest } from 'src/@intermediate/contract/model/post/post-contract';
 import { Contractor } from 'src/@intermediate/contractor/model/get/get-create-contractor';
@@ -21,6 +21,10 @@ export class CreateContractComponent implements OnInit {
   errorMessage: string;
   sucessMessage: string;
   panelOpenState: boolean;
+  //updateChart: boolean;
+  @Output()
+  updateChartOnCreate = new EventEmitter();
+
   constructor(private contractService: ContractService) 
   {
     this.form = new ContractsForm();
@@ -54,6 +58,7 @@ export class CreateContractComponent implements OnInit {
     }
     this.contractService.create(req).subscribe(response =>{
       this.sucessMessage = "Sucessfully Created.";
+      this.updateChartOnCreate.emit("true");
     },
     error=>{
       this.errorMessage = error.error;

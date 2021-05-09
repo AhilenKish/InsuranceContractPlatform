@@ -10,5 +10,7 @@ namespace InsuranceContractPlatform.Services.Chart.Get
     public class GetChartResponse
     {
         public List<ContactorsChart> Contractors { get;  set; }
+        public List<int> Contracts { get;  set; }
+        public List<ContactorsChart> Relationship { get;  set; }
     }
 }
